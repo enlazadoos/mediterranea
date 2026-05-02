@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boda · Sofía & Marcos</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --terra: #C4714A;
+      --terra-light: #F2E0D3;
+      --terra-dark: #7A3F25;
+      --sage: #7A8C6E;
+      --sage-light: #E8EDE4;
+      --sand: #F5EFE6;
+      --dark: #2C2418;
+      --mid: #6B5B47;
+      --light-text: #9B8878;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--sand);
+      color: var(--dark);
+      font-weight: 300;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--terra-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(196,113,74,0.12) 0%, transparent 50%),
+        radial-gradient(circle at 85% 80%, rgba(122,140,110,0.12) 0%, transparent 50%);
+    }
+
+    .hero-deco {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      color: var(--terra);
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .hero-names {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(52px, 14vw, 88px);
+      font-weight: 400;
+      line-height: 1.05;
+      color: var(--terra-dark);
+      position: relative;
+    }
+
+    .hero-names .ampersand {
+      font-style: italic;
+      color: var(--terra);
+      display: block;
+      font-size: 0.65em;
+      line-height: 1.2;
+    }
+
+    .hero-date {
+      margin-top: 2rem;
+      font-size: 13px;
+      letter-spacing: 0.25em;
+      color: var(--mid);
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .hero-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--terra);
+      margin: 1.5rem auto;
+      position: relative;
+    }
+
+    .hero-place {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--mid);
+      position: relative;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--light-text);
+      text-transform: uppercase;
+    }
+
+    /* ── COUNTDOWN ── */
+    .countdown-section {
+      background: var(--terra-dark);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .countdown-label {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 2rem;
+    }
+
+    .countdown-grid {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .countdown-unit {
+      text-align: center;
+    }
+
+    .countdown-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .countdown-unit-label {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-top: 0.5rem;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 4rem 2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-body {
+      font-size: 15px;
+      color: var(--mid);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .divider-leaf {
+      text-align: center;
+      padding: 1rem 0;
+      color: var(--sage);
+      font-size: 20px;
+      letter-spacing: 0.5rem;
+    }
+
+    /* ── VENUE CARD ── */
+    .venue-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+
+    .venue-img-placeholder {
+      height: 180px;
+      background: var(--terra-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .venue-leaf-deco {
+      font-size: 48px;
+      color: var(--sage);
+      opacity: 0.4;
+    }
+
+    .venue-info {
+      padding: 1.25rem 1.5rem;
+    }
+
+    .venue-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: var(--dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .venue-address {
+      font-size: 13px;
+      color: var(--light-text);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .venue-time {
+      display: inline-block;
+      background: var(--terra-light);
+      color: var(--terra-dark);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 16px;
+      border-radius: 20px;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+
+    .map-btn {
+      display: block;
+      text-align: center;
+      background: var(--terra);
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      padding: 12px;
+      border-radius: 10px;
+      margin-top: 0.75rem;
+    }
+
+    /* ── PROGRAMA ── */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 1rem;
+      padding-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 27px;
+      top: 32px;
+      bottom: 0;
+      width: 1px;
+      background: var(--terra-light);
+    }
+
+    .timeline-item:last-child::before { display: none; }
+
+    .timeline-time {
+      font-size: 12px;
+      color: var(--terra);
+      font-weight: 500;
+      padding-top: 6px;
+      text-align: right;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 22px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--terra);
+      border: 3px solid var(--sand);
+    }
+
+    .timeline-content { padding-left: 1rem; }
+
+    .timeline-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: var(--dark);
+      margin-bottom: 2px;
+    }
+
+    .timeline-desc {
+      font-size: 13px;
+      color: var(--light-text);
+    }
+
+    /* ── TRANSPORTE ── */
+    .transport-card {
+      background: var(--terra-light);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .transport-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      color: var(--terra-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .transport-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      color: var(--mid);
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(196,113,74,0.2);
+    }
+
+    .transport-row:last-child { border-bottom: none; }
+
+    .transport-time {
+      font-weight: 500;
+      color: var(--terra);
+    }
+
+    /* ── VESTIMENTA ── */
+    .dress-card {
+      background: var(--terra-light);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .dress-icon {
+      font-size: 36px;
+      margin-bottom: 0.75rem;
+    }
+
+    .dress-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: var(--terra-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .dress-desc {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+
+    .color-chips {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 1rem;
+    }
+
+    .chip {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.7);
+    }
+
+    /* ── PREBODA ── */
+    .preboda-card {
+      background: var(--terra);
+      border-radius: 16px;
+      padding: 1.5rem;
+      color: #fff;
+    }
+
+    .preboda-tag {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terra-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .preboda-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      margin-bottom: 0.5rem;
+    }
+
+    .preboda-info {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
+    }
+
+    .preboda-detail {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* ── RSVP ── */
+    .rsvp-section {
+      background: var(--terra);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .rsvp-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .rsvp-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 2rem;
+    }
+
+    .rsvp-form {
+      max-width: 480px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .rsvp-form input,
+    .rsvp-form select,
+    .rsvp-form textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: none;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+    }
+
+    .rsvp-form input::placeholder,
+    .rsvp-form textarea::placeholder { color: rgba(255,255,255,0.5); }
+
+    .rsvp-form select option { color: #000; background: #fff; }
+
+    .rsvp-toggle {
+      display: flex;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .rsvp-toggle label {
+      flex: 1;
+      padding: 12px;
+      text-align: center;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .rsvp-toggle input[type="radio"] { display: none; }
+    .rsvp-toggle input[type="radio"]:checked + label {
+      background: rgba(255,255,255,0.25);
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .rsvp-btn {
+      padding: 16px;
+      background: #fff;
+      color: var(--terra-dark);
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-names {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: var(--terra-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-date {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+    }
+
+    .footer-made {
+      margin-top: 2rem;
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+    }
+
+    .footer-made a {
+      color: var(--terra);
+      text-decoration: none;
+    }
+
+    /* ── CONFIRM ── */
+    .confirm-screen {
+      display: none;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .confirm-icon { font-size: 48px; }
+
+    .confirm-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: #fff;
+      margin: 1rem 0 0.5rem;
+    }
+
+    .confirm-sub { font-size: 14px; color: rgba(255,255,255,0.7); }
+
+    /* ── GALERÍA CON MARCO ── */
+    .gallery-section {
+      background: var(--terra-light);
+      padding: 4rem 0 3.5rem;
+      overflow: hidden;
+    }
+
+    .gallery-header {
+      text-align: center;
+      padding: 0 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .gallery-header .section-tag { margin-bottom: 0.25rem; }
+    .gallery-header .section-title { margin-bottom: 0; }
+
+    /* Escenario donde flotan las fotos */
+    .gallery-stage {
+      position: relative;
+      height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+
+    /* Cada foto con marco estilo polaroid */
+    .gallery-card {
+      position: absolute;
+      width: 200px;
+      background: #fff;
+      padding: 12px 12px 40px;
+      box-shadow: 0 8px 32px rgba(44,36,24,0.18), 0 2px 8px rgba(44,36,24,0.10);
+      cursor: pointer;
+      transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1),
+                  opacity 0.4s ease,
+                  box-shadow 0.3s ease;
+      will-change: transform;
+    }
+
+    .gallery-card:hover {
+      box-shadow: 0 16px 48px rgba(44,36,24,0.22), 0 4px 12px rgba(44,36,24,0.12);
+    }
+
+    /* La imagen dentro del polaroid */
+    .gallery-card-img {
+      width: 100%;
+      aspect-ratio: 1;
+      overflow: hidden;
+      background: var(--terra-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+
+    /* Placeholder cuando no hay foto */
+    .gallery-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 8px;
+      background: var(--terra-light);
+    }
+
+    .gallery-placeholder-icon { font-size: 24px; color: var(--terra); opacity: 0.4; }
+    .gallery-placeholder-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic; font-size: 12px; color: var(--mid);
+    }
+
+    /* Pie del polaroid */
+    .gallery-card-caption {
+      text-align: center;
+      padding-top: 10px;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--mid);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .gallery-card.is-center .gallery-card-caption { opacity: 1; }
+
+    /* Estados posicionales */
+    .gallery-card.is-left-far  { transform: translateX(-230px) rotate(-8deg) scale(0.82); opacity: 0.45; z-index: 1; }
+    .gallery-card.is-left      { transform: translateX(-130px) rotate(-4deg) scale(0.9);  opacity: 0.7;  z-index: 2; }
+    .gallery-card.is-center    { transform: translateX(0)       rotate(0deg)  scale(1.08); opacity: 1;   z-index: 4; box-shadow: 0 20px 60px rgba(44,36,24,0.25); }
+    .gallery-card.is-right     { transform: translateX(130px)  rotate(4deg)  scale(0.9);  opacity: 0.7;  z-index: 2; }
+    .gallery-card.is-right-far { transform: translateX(230px)  rotate(8deg)  scale(0.82); opacity: 0.45; z-index: 1; }
+    .gallery-card.is-hidden    { opacity: 0; pointer-events: none; transform: scale(0.7); z-index: 0; }
+
+    /* Controles */
+    .gallery-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 2rem;
+    }
+
+    .gallery-btn {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 1px solid rgba(196,113,74,0.4);
+      background: #fff;
+      color: var(--terra);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background 0.18s, border-color 0.18s;
+      flex-shrink: 0;
+    }
+
+    .gallery-btn:hover { background: var(--terra); color: #fff; border-color: var(--terra); }
+    .gallery-btn:disabled { opacity: 0.25; cursor: default; }
+
+    .gallery-dots { display: flex; gap: 7px; align-items: center; }
+
+    .gallery-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: rgba(196,113,74,0.3);
+      border: none; padding: 0; cursor: pointer;
+      transition: background 0.25s, transform 0.25s;
+    }
+
+    .gallery-dot.is-active { background: var(--terra); transform: scale(1.45); }
+
+    @media (max-width: 520px) {
+      .gallery-stage { height: 320px; }
+      .gallery-card { width: 160px; padding: 9px 9px 34px; }
+      .gallery-card.is-left-far  { transform: translateX(-175px) rotate(-8deg) scale(0.82); }
+      .gallery-card.is-left      { transform: translateX(-100px) rotate(-4deg) scale(0.9); }
+      .gallery-card.is-right     { transform: translateX(100px)  rotate(4deg)  scale(0.9); }
+      .gallery-card.is-right-far { transform: translateX(175px)  rotate(8deg)  scale(0.82); }
+    }
+
+    /* ── FORMULARIO RSVP MEJORADO ── */
+    .rsvp-form { display: flex; flex-direction: column; gap: 12px; }
+
+    .rsvp-guest-cards { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+
+    .rsvp-guest-card {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .rsvp-guest-card-title {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terra-light);
+      margin-bottom: 2px;
+    }
+
+    .rsvp-field-pair {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .rsvp-stepper {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .rsvp-stepper-btn {
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,0.1);
+      border: none; color: #fff;
+      font-size: 20px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s;
+      flex-shrink: 0;
+    }
+
+    .rsvp-stepper-btn:hover { background: rgba(255,255,255,0.2); }
+    .rsvp-stepper-btn:disabled { opacity: 0.3; cursor: default; }
+
+    .rsvp-stepper-val {
+      flex: 1; text-align: center;
+      font-size: 16px; font-weight: 500; color: #fff;
+    }
+
+    .rsvp-label {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .result-msg {
+      margin-top: 8px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 14px;
+      display: none;
+    }
+
+    .result-msg.is-ok {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+
+    .result-msg.is-error {
+      background: rgba(180,50,50,0.3);
+      color: #ffd0d0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-deco">nos casamos</p>
+    <h1 class="hero-names">
+      Sofía
+      <span class="ampersand">&</span>
+      Marcos
+    </h1>
+    <div class="hero-divider"></div>
+    <p class="hero-date">12 · Julio · 2026</p>
+    <p class="hero-place">Finca Son Marroig · Mallorca</p>
+    <p class="scroll-hint">desliza para ver más</p>
+  </section>
+
+  <!-- CUENTA ATRÁS -->
+  <section class="countdown-section">
+    <p class="countdown-label">cuenta atrás para el gran día</p>
+    <div class="countdown-grid">
+      <div class="countdown-unit">
+        <div class="countdown-num" id="days">--</div>
+        <div class="countdown-unit-label">días</div>
+      </div>
+      <div class="countdown-unit">
+        <div class="countdown-num" id="hours">--</div>
+        <div class="countdown-unit-label">horas</div>
+      </div>
+      <div class="countdown-unit">
+        <div class="countdown-num" id="mins">--</div>
+        <div class="countdown-unit-label">minutos</div>
+      </div>
+      <div class="countdown-unit">
+        <div class="countdown-num" id="secs">--</div>
+        <div class="countdown-unit-label">segundos</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETALLES -->
+  <div style="background: var(--sand);">
+    <div class="section">
+      <p class="section-tag">el gran día</p>
+      <h2 class="section-title">Todo lo que necesitas saber</h2>
+      <p class="section-body">Estamos deseando compartir este día tan especial con vosotros. Aquí tenéis todos los detalles para que no tengáis que preocuparos de nada.</p>
+
+      <div class="venue-card">
+        <div class="venue-img-placeholder">
+          <div class="venue-leaf-deco">⌘</div>
+        </div>
+        <div class="venue-info">
+          <p class="venue-time">18:30 h · Ceremonia civil</p>
+          <h3 class="venue-name">Finca Son Marroig</h3>
+          <p class="venue-address">Carretera de Valldemossa, km 26<br>07179 Deià, Mallorca</p>
+          <a class="map-btn" href="https://maps.google.com" target="_blank">Cómo llegar</a>
+        </div>
+      </div>
+
+      <div class="divider-leaf">· · ·</div>
+
+      <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:var(--dark); margin-bottom:1.5rem;">Programa del día</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-time">18:30</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-title">Ceremonia civil</div>
+            <div class="timeline-desc">En los jardines de la finca con vistas al Mediterráneo</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">19:30</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-title">Cóctel</div>
+            <div class="timeline-desc">Aperitivos y bienvenida en la terraza principal</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">21:00</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-title">Cena y fiesta</div>
+            <div class="timeline-desc">Cena bajo las estrellas y después… ¡a bailar!</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">03:00</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-title">Primer autobús de vuelta</div>
+            <div class="timeline-desc">Para quien lo necesite</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRANSPORTE -->
+  <div style="background: #fff;">
+    <div class="section">
+      <p class="section-tag">transporte</p>
+      <h2 class="section-title">Os lo ponemos fácil</h2>
+      <p class="section-body">Para que podáis disfrutar sin preocupaciones, habrá servicio de autobús desde Palma.</p>
+
+      <div class="transport-card">
+        <div class="transport-title">Bus de ida · domingo 12 de julio</div>
+        <div class="transport-row">
+          <span>Palma · Parada Jaume III</span>
+          <span class="transport-time">17:00 h</span>
+        </div>
+        <div class="transport-row">
+          <span>Palma · Estació Intermodal</span>
+          <span class="transport-time">17:15 h</span>
+        </div>
+        <div class="transport-row">
+          <span>Llegada a la finca</span>
+          <span class="transport-time">~18:00 h</span>
+        </div>
+      </div>
+
+      <div class="transport-card">
+        <div class="transport-title">Bus de vuelta</div>
+        <div class="transport-row">
+          <span>Primer turno</span>
+          <span class="transport-time">03:00 h</span>
+        </div>
+        <div class="transport-row">
+          <span>Segundo turno</span>
+          <span class="transport-time">Fin de fiesta</span>
+        </div>
+        <div class="transport-row">
+          <span>Destino</span>
+          <span class="transport-time">Palma centro</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VESTIMENTA -->
+  <div style="background: var(--sand);">
+    <div class="section">
+      <p class="section-tag">código de vestimenta</p>
+      <h2 class="section-title">Elegancia mediterránea</h2>
+      <div class="dress-card">
+        <div class="dress-icon">✦</div>
+        <div class="dress-title">Semi-formal</div>
+        <div class="dress-desc">Tonos tierra, blancos y cremas son bienvenidos. Evitad el negro riguroso y el blanco puro para las señoras. Zapatos planos o cuña recomendados — ¡hay jardín!</div>
+        <div class="color-chips">
+          <div class="chip" style="background:#C4714A;"></div>
+          <div class="chip" style="background:#E8D5C0;"></div>
+          <div class="chip" style="background:#7A8C6E;"></div>
+          <div class="chip" style="background:#F5EFE6;"></div>
+          <div class="chip" style="background:#2C2418;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREBODA -->
+  <div style="background: #fff;">
+    <div class="section">
+      <p class="section-tag">la noche anterior</p>
+      <h2 class="section-title">Precelebración</h2>
+      <p class="section-body">Empezamos el fin de semana en grande. Os invitamos a una noche informal para calentar motores.</p>
+      <div class="preboda-card">
+        <div class="preboda-tag">sábado 11 de julio</div>
+        <div class="preboda-title">Cena informal en el puerto</div>
+        <div class="preboda-info">Una velada tranquila para que los que venís de fuera podáis conoceros y poner cara a todos.</div>
+        <div class="preboda-detail">
+          <span>📍 Restaurant La Llotja · Port de Sóller</span>
+          <span>🕗 20:30 h</span>
+          <span>👗 Casual (la playa manda)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GALERÍA CON MARCO -->
+  <section class="gallery-section">
+    <div class="gallery-header">
+      <p class="section-tag">nuestra historia</p>
+      <h2 class="section-title" style="font-family:'Playfair Display',serif; font-size:28px; color:var(--dark);">Algunos momentos juntos</h2>
+    </div>
+
+    <div class="gallery-stage" id="galleryStage">
+      <!-- Añade data-caption con un texto corto opcional para el pie de foto -->
+      <!-- Para foto real: reemplaza .gallery-placeholder por <img src="foto.jpg" alt="..."> -->
+      <div class="gallery-card" data-caption="Nuestro primer viaje">
+        <div class="gallery-card-img">
+          <img src="viaje.png" alt="Nuestro primer viaje">
+        </div>
+        <div class="gallery-card-caption">Nuestro primer viaje</div>
+      </div>
+    
+      <div class="gallery-card" data-caption="Aquella tarde en el puerto">
+        <div class="gallery-card-img">
+          <img src="atardecer.png" alt="Aquella tarde en el puerto">
+        </div>
+        <div class="gallery-card-caption">Aquella tarde en el puerto</div>
+      </div>
+
+      <div class="gallery-card" data-caption="La pedida">
+        <div class="gallery-card-img">
+          <img src="pedida.png" alt="La pedida">
+        </div>
+        <div class="gallery-card-caption">La pedida</div>
+      </div>
+
+      <div class="gallery-card" data-caption="Celebrando juntos">
+        <div class="gallery-card-img">
+          <img src="celebrando-vino.png" alt="Celebrando juntos">
+        </div>
+        <div class="gallery-card-caption">Celebrando juntos</div>
+      </div>
+
+      <div class="gallery-card" data-caption="Mallorca nos espera">
+        <div class="gallery-card-img">
+          <img src="mallorca.png" alt="Mallorca nos espera">
+        </div>
+        <div class="gallery-card-caption">Mallorca nos espera</div>
+      </div>
+    </div>
+
+    <div class="gallery-controls">
+      <button class="gallery-btn" id="galleryPrev" aria-label="Anterior">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div class="gallery-dots" id="galleryDots"></div>
+      <button class="gallery-btn" id="galleryNext" aria-label="Siguiente">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section class="rsvp-section">
+    <div id="rsvp-content">
+      <h2 class="rsvp-title">¿Venís?</h2>
+      <p class="rsvp-sub">Confirmad antes del 15 de mayo de 2026</p>
+      <form class="rsvp-form" id="rsvpForm" onsubmit="return false;">
+
+        <!-- Asistencia -->
+        <div>
+          <span class="rsvp-label">¿Asistiréis a la boda?</span>
+          <div class="rsvp-toggle">
+            <input type="radio" name="asistencia" id="si" value="Sí" checked />
+            <label for="si">Sí, allí estaremos</label>
+            <input type="radio" name="asistencia" id="no" value="No" />
+            <label for="no">No podremos ir</label>
+          </div>
+        </div>
+
+        <!-- Nº personas + stepper -->
+        <div id="guestBlock">
+          <span class="rsvp-label">Nº de personas (incluyéndoos)</span>
+          <div class="rsvp-stepper">
+            <button type="button" class="rsvp-stepper-btn" id="guestMinus" aria-label="Restar">−</button>
+            <span class="rsvp-stepper-val" id="guestCount">1</span>
+            <button type="button" class="rsvp-stepper-btn" id="guestPlus" aria-label="Sumar">+</button>
+          </div>
+        </div>
+
+        <!-- Tarjetas de invitados (generadas por JS) -->
+        <div id="guestCards"></div>
+
+        <!-- Autobús -->
+        <div id="busBlock">
+          <span class="rsvp-label">¿Necesitáis autobús?</span>
+          <div class="rsvp-toggle">
+            <input type="radio" name="bus" id="bus-no" value="No" checked />
+            <label for="bus-no">No, vamos por nuestra cuenta</label>
+            <input type="radio" name="bus" id="bus-si" value="Sí" />
+            <label for="bus-si">Sí, necesitamos bus</label>
+          </div>
+        </div>
+
+        <!-- Preboda -->
+        <div id="prebodaBlock">
+          <span class="rsvp-label">¿Asistiréis a la precelebración del sábado?</span>
+          <div class="rsvp-toggle">
+            <input type="radio" name="preboda" id="pre-si" value="Sí" />
+            <label for="pre-si">Sí, estaremos</label>
+            <input type="radio" name="preboda" id="pre-no" value="No" checked />
+            <label for="pre-no">No podremos</label>
+          </div>
+        </div>
+
+        <!-- Canción -->
+        <div id="songBlock">
+          <span class="rsvp-label">Una canción que no puede faltar</span>
+          <input class="s-field" type="text" name="song" placeholder="Ej. Whole Lotta Love..." />
+        </div>
+
+        <!-- Mensaje -->
+        <div>
+          <span class="rsvp-label">Un mensaje para los novios</span>
+          <textarea class="s-field" name="message" rows="3" placeholder="Escribe aquí…" style="resize:none;"></textarea>
+        </div>
+
+        <button class="rsvp-btn" id="submitBtn" type="button" onclick="enviarRSVP()">Enviar confirmación</button>
+        <div class="result-msg" id="resultMsg"></div>
+      </form>
+    </div>
+    <div class="confirm-screen" id="confirm-screen">
+      <div class="confirm-icon">✦</div>
+      <div class="confirm-title">¡Gracias!</div>
+      <div class="confirm-sub">Hemos recibido vuestra confirmación.<br>¡Nos vemos el 12 de julio!</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-names">Sofía & Marcos</div>
+    <div class="footer-date">12 · VII · 2026 · Mallorca</div>
+    <div class="footer-made">Invitación creada con <a href="#">enlazados.es</a></div>
+  </footer>
+
+  <script>
+    /* ── CONFIG ── */
+    const WEDDING_DATE = '2026-07-12T18:30:00';
+    const SCRIPT_URL = 'PEGA_AQUÍ_TU_URL_DE_GOOGLE_APPS_SCRIPT';
+
+    /* ── CUENTA ATRÁS ── */
+    function countdown() {
+      const diff = new Date(WEDDING_DATE) - new Date();
+      if (diff <= 0) { ['days','hours','mins','secs'].forEach(id => document.getElementById(id).textContent = '00'); return; }
+      document.getElementById('days').textContent  = String(Math.floor(diff / 86400000)).padStart(2,'0');
+      document.getElementById('hours').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2,'0');
+      document.getElementById('mins').textContent  = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
+      document.getElementById('secs').textContent  = String(Math.floor((diff % 60000) / 1000)).padStart(2,'0');
+    }
+    countdown();
+    setInterval(countdown, 1000);
+
+    /* ── FORMULARIO RSVP ── */
+    let guestCount = 1;
+    const MAX_GUESTS = 5;
+
+    function isAttending() {
+      return document.querySelector('input[name="asistencia"]:checked')?.value === 'Sí';
+    }
+
+    function renderGuestCards() {
+      const container = document.getElementById('guestCards');
+      const total = isAttending() ? guestCount : 1;
+      container.innerHTML = '';
+      for (let i = 1; i <= total; i++) {
+        const card = document.createElement('div');
+        card.className = 'rsvp-guest-card';
+        card.innerHTML = `
+          <div class="rsvp-guest-card-title">${i === 1 ? (isAttending() ? 'Contacto principal' : 'Tus datos') : 'Invitado ' + i}</div>
+          <div class="rsvp-field-pair">
+            <input class="s-field" type="text" name="nombre_${i}" placeholder="Nombre y apellidos *" required />
+            <input class="s-field" type="text" name="dieta_${i}" placeholder="Alergias o intolerancias (opcional)" />
+          </div>`;
+        container.appendChild(card);
+      }
+    }
+
+    function toggleBlocks() {
+      const attending = isAttending();
+      ['guestBlock','busBlock','prebodaBlock','songBlock'].forEach(id => {
+        document.getElementById(id).style.display = attending ? 'block' : 'none';
+      });
+      renderGuestCards();
+    }
+
+    document.querySelectorAll('input[name="asistencia"]').forEach(r => r.addEventListener('change', toggleBlocks));
+
+    document.getElementById('guestMinus').addEventListener('click', () => {
+      if (guestCount > 1) { guestCount--; document.getElementById('guestCount').textContent = guestCount; renderGuestCards(); }
+    });
+    document.getElementById('guestPlus').addEventListener('click', () => {
+      if (guestCount < MAX_GUESTS) { guestCount++; document.getElementById('guestCount').textContent = guestCount; renderGuestCards(); }
+    });
+
+    toggleBlocks();
+
+    /* ── ENVÍO A GOOGLE SHEETS ── */
+    async function enviarRSVP() {
+      const btn = document.getElementById('submitBtn');
+      const resultMsg = document.getElementById('resultMsg');
+      const attending = isAttending();
+      const total = attending ? guestCount : 1;
+
+      const guestsData = [];
+      for (let i = 1; i <= total; i++) {
+        const nombre = document.querySelector(`input[name="nombre_${i}"]`)?.value.trim();
+        if (!nombre) {
+          mostrarResultado(`Por favor, indica el nombre del ${i === 1 ? 'contacto principal' : 'invitado ' + i}.`, true);
+          return;
+        }
+        guestsData.push({
+          numero: i,
+          tipo: i === 1 ? 'Contacto principal' : 'Invitado',
+          nombre,
+          dieta: document.querySelector(`input[name="dieta_${i}"]`)?.value.trim() || ''
+        });
+      }
+
+      const data = {
+        attend: attending ? 'Sí, asistiré' : 'No podré asistir',
+        guests: attending ? guestCount : 1,
+        guestsData,
+        fullName: guestsData[0]?.nombre || '',
+        bus: attending ? (document.querySelector('input[name="bus"]:checked')?.value || 'No') : 'No',
+        preboda: attending ? (document.querySelector('input[name="preboda"]:checked')?.value || 'No') : 'No',
+        song: attending ? (document.querySelector('input[name="song"]')?.value.trim() || '') : '',
+        message: document.querySelector('textarea[name="message"]')?.value.trim() || ''
+      };
+
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+
+      try {
+        const res = await fetch(SCRIPT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(data)
+        });
+        const json = JSON.parse(await res.text());
+        if (!json.ok) throw new Error(json.message || 'Error al guardar.');
+        document.getElementById('rsvp-content').style.display = 'none';
+        document.getElementById('confirm-screen').style.display = 'block';
+      } catch (err) {
+        mostrarResultado('Error al enviar: ' + err.message, true);
+        btn.disabled = false;
+        btn.textContent = 'Enviar confirmación';
+      }
+    }
+
+    function mostrarResultado(msg, isError) {
+      const el = document.getElementById('resultMsg');
+      el.textContent = msg;
+      el.className = 'result-msg ' + (isError ? 'is-error' : 'is-ok');
+      el.style.display = 'block';
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    /* ── GALERÍA POLAROID ── */
+    (function () {
+      const stage   = document.getElementById('galleryStage');
+      const prevBtn = document.getElementById('galleryPrev');
+      const nextBtn = document.getElementById('galleryNext');
+      const dotsEl  = document.getElementById('galleryDots');
+      if (!stage) return;
+
+      const cards = Array.from(stage.querySelectorAll('.gallery-card'));
+      const total = cards.length;
+      let current = 0;
+      let autoplay;
+      const DELAY = 3500;
+
+      /* Posiciones relativas al centro */
+      const POSITIONS = ['is-left-far', 'is-left', 'is-center', 'is-right', 'is-right-far'];
+
+      /* Dots */
+      cards.forEach((_, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'gallery-dot' + (i === 0 ? ' is-active' : '');
+        btn.setAttribute('aria-label', 'Foto ' + (i + 1));
+        btn.addEventListener('click', () => goTo(i, true));
+        dotsEl.appendChild(btn);
+      });
+
+      function updateDots(i) {
+        dotsEl.querySelectorAll('.gallery-dot').forEach((d, idx) => d.classList.toggle('is-active', idx === i));
+      }
+
+      function applyPositions(centerIdx) {
+        cards.forEach((card, i) => {
+          card.className = 'gallery-card';
+          const offset = i - centerIdx;
+          if      (offset === -2) card.classList.add('is-left-far');
+          else if (offset === -1) card.classList.add('is-left');
+          else if (offset ===  0) card.classList.add('is-center');
+          else if (offset ===  1) card.classList.add('is-right');
+          else if (offset ===  2) card.classList.add('is-right-far');
+          else                    card.classList.add('is-hidden');
+        });
+      }
+
+      function goTo(i, manual = false) {
+        current = ((i % total) + total) % total;
+        applyPositions(current);
+        updateDots(current);
+        prevBtn.disabled = false;
+        nextBtn.disabled = false;
+        if (manual) resetAutoplay();
+      }
+
+      prevBtn.addEventListener('click', () => goTo(current - 1, true));
+      nextBtn.addEventListener('click', () => goTo(current + 1, true));
+
+      /* Click en foto lateral → ir a esa foto */
+      cards.forEach((card, i) => {
+        card.addEventListener('click', () => {
+          if (i !== current) goTo(i, true);
+        });
+      });
+
+      /* Swipe táctil */
+      let touchStartX = 0;
+      stage.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      stage.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1, true);
+      }, { passive: true });
+
+      /* Autoplay */
+      function startAutoplay() {
+        autoplay = setInterval(() => goTo(current + 1), DELAY);
+      }
+      function resetAutoplay() {
+        clearInterval(autoplay);
+        startAutoplay();
+      }
+
+      stage.addEventListener('mouseenter', () => clearInterval(autoplay));
+      stage.addEventListener('mouseleave', () => startAutoplay());
+
+      goTo(0);
+      startAutoplay();
+    })();
+  </script>
+
+</body>
+</html>
